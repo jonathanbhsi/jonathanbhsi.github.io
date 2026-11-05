@@ -3,173 +3,263 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Your Name</title>
+<title>Jonathan Hsi</title>
+<meta name="description" content="Jonathan Hsi: sprinter, math researcher, and future founder learning marketing and code.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230e8fb3'/%3E%3Ctext x='32' y='42' font-family='Arial' font-weight='700' font-size='26' fill='white' text-anchor='middle'%3EJH%3C/text%3E%3C/svg%3E">
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap");
-
-:root {
-  --bg: #0b0f17;
-  --panel: #121926;
-  --ink: #e8eef7;
-  --muted: #8a97ab;
-  --accent: #36e0ff;
-  --line: #1f2a3c;
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
+:root{
+  --bg:#fbf8f3; --panel:#ffffff; --ink:#1d2533; --muted:#5d6878; --line:#ebe5dc;
+  --accent:#0e8fb3; --accent-soft:#e3f4f9; --warm:#f2994a; --warm-soft:#fdeedf; --green:#2a9d6f; --green-soft:#e2f4ec;
+  --shadow:0 1px 2px rgba(29,37,51,.04),0 8px 24px rgba(29,37,51,.06);
 }
-
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-  margin: 0;
-  font-family: "Inter", system-ui, sans-serif;
-  background: var(--bg);
-  color: var(--ink);
-  line-height: 1.6;
-}
-
-.nav {
-  position: sticky; top: 0; z-index: 10;
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 14px 24px;
-  background: rgba(11, 15, 23, 0.85);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--line);
-}
-.logo { font-weight: 800; color: var(--accent); text-decoration: none; letter-spacing: 0.1em; }
-.nav nav a { color: var(--muted); text-decoration: none; margin-left: 20px; font-weight: 600; }
-.nav nav a:hover { color: var(--ink); }
-
-main { max-width: 900px; margin: 0 auto; padding: 0 24px; }
-
-.hero { padding: 110px 0 80px; }
-.eyebrow { color: var(--accent); text-transform: uppercase; letter-spacing: 0.15em; font-size: 13px; font-weight: 600; }
-h1 { font-size: clamp(40px, 7vw, 68px); line-height: 1.05; margin: 10px 0 18px; }
-.accent { color: var(--accent); }
-.lead { font-size: 20px; color: var(--muted); max-width: 560px; }
-
-.btn {
-  display: inline-block; margin-top: 18px; padding: 12px 22px;
-  background: var(--accent); color: #021018; font-weight: 700;
-  border-radius: 8px; text-decoration: none;
-  transition: transform 0.15s, box-shadow 0.15s;
-}
-.btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(54, 224, 255, 0.3); }
-.btn.ghost { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
-
-.section { padding: 60px 0; border-top: 1px solid var(--line); }
-h2 { font-size: 28px; margin: 0 0 24px; }
-
-.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
-.card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 20px; }
-.card h3 { margin: 0 0 8px; color: var(--accent); font-size: 17px; }
-.card p { margin: 0; color: var(--muted); }
-
-.timeline { list-style: none; padding: 0; margin: 0 0 28px; }
-.timeline li { padding: 14px 0; border-bottom: 1px solid var(--line); }
-.tag {
-  display: inline-block; min-width: 92px; margin-right: 10px;
-  font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent);
-}
-
-.progress { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; }
-.progress-top { display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 10px; }
-.progress-top span:last-child { color: var(--muted); }
-.bar { height: 10px; background: var(--line); border-radius: 99px; overflow: hidden; }
-.fill { height: 100%; width: 0; background: linear-gradient(90deg, var(--accent), #3dffb0); border-radius: 99px; transition: width 1s ease; }
-
-.foot { text-align: center; color: var(--muted); padding: 40px 0; font-size: 14px; }
-
-/* Fade sections in as you scroll */
-.js .section { opacity: 0; transform: translateY(20px); transition: opacity 0.6s, transform 0.6s; }
-.js .section.show { opacity: 1; transform: none; }
-@media (prefers-reduced-motion: reduce) {
-  .js .section { opacity: 1; transform: none; transition: none; }
-}
-@media (max-width: 520px) {
-  .nav nav a { margin-left: 12px; }
-  .tag { display: block; margin-bottom: 4px; }
+*{box-sizing:border-box}
+body{margin:0;font-family:"Plus Jakarta Sans",system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65}
+a{color:var(--accent)}
+.nav{position:sticky;top:0;z-index:10;background:rgba(251,248,243,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 24px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--ink);text-decoration:none}
+.logo b{display:grid;place-items:center;width:36px;height:36px;border-radius:10px;background:var(--accent);color:#fff;font-size:14px;letter-spacing:.04em}
+.tabs{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tabs a{white-space:nowrap;padding:8px 14px;border-radius:99px;color:var(--muted);text-decoration:none;font-weight:600;font-size:15px;transition:background .15s,color .15s}
+.tabs a:hover{background:var(--line);color:var(--ink)}
+.tabs a.active{background:var(--ink);color:#fff}
+main{max-width:1000px;margin:0 auto;padding:0 24px 40px}
+.page{display:none;animation:in .35s ease}
+.page.active{display:block}
+@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.page{animation:none}}
+.hero{padding:72px 0 40px;display:grid;grid-template-columns:1.4fr 1fr;gap:40px;align-items:center}
+.hello{display:inline-block;background:var(--warm-soft);color:#b5641c;font-weight:700;font-size:14px;padding:6px 14px;border-radius:99px}
+h1{font-size:clamp(38px,6vw,60px);line-height:1.08;margin:16px 0;letter-spacing:-.02em}
+h1 span{color:var(--accent)}
+.lead{font-size:19px;color:var(--muted);margin:0;max-width:540px}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.btn{display:inline-block;padding:12px 22px;border-radius:12px;font-weight:700;text-decoration:none;background:var(--accent);color:#fff;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(14,143,179,.25)}
+.btn.soft{background:var(--panel);color:var(--ink);border:1px solid var(--line)}
+.facts{display:grid;gap:12px}
+.fact{display:flex;align-items:center;gap:14px;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px 16px;box-shadow:var(--shadow);text-decoration:none;color:var(--ink);transition:transform .15s}
+.fact:hover{transform:translateX(4px)}
+.fact i{flex:none;display:grid;place-items:center;width:44px;height:44px;border-radius:12px;font-style:normal;font-weight:800;font-size:15px}
+.fact .t{font-weight:700}
+.fact .s{font-size:14px;color:var(--muted)}
+.i-blue{background:var(--accent-soft);color:var(--accent)}
+.i-warm{background:var(--warm-soft);color:#c96f22}
+.i-green{background:var(--green-soft);color:var(--green)}
+.head{padding:56px 0 8px}
+.kicker{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0}
+h2{font-size:clamp(30px,4.5vw,40px);margin:8px 0 10px;letter-spacing:-.01em}
+.intro{color:var(--muted);font-size:17px;max-width:640px;margin:0}
+h3{font-size:20px;margin:40px 0 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:var(--shadow)}
+.card h4{margin:0 0 6px;font-size:17px}
+.card p{margin:0;color:var(--muted)}
+.card .badge{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:12px;margin-bottom:12px;font-weight:800}
+.pr .ev{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.pr .mark{font-size:44px;font-weight:800;line-height:1.1;margin:6px 0 4px;color:var(--ink)}
+.pr .mark small{font-size:20px;color:var(--muted);margin-left:2px}
+.pr .meta{font-size:14px;color:var(--muted)}
+.list{list-style:none;padding:0;margin:0;background:var(--panel);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}
+.list li{display:flex;gap:12px;align-items:flex-start;padding:14px 20px;border-bottom:1px solid var(--line)}
+.list li:last-child{border-bottom:none}
+.dot{flex:none;width:10px;height:10px;border-radius:50%;margin-top:9px;background:var(--green)}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{background:var(--panel);border:1px solid var(--line);border-radius:99px;padding:8px 16px;font-weight:600;font-size:15px;box-shadow:var(--shadow)}
+.chip.gold{background:var(--warm-soft);border-color:#f6d7b8;color:#9a5418}
+.tablewrap{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}
+table{width:100%;border-collapse:collapse;font-size:15px;min-width:520px}
+th{text-align:left;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:14px 18px;border-bottom:1px solid var(--line)}
+td{padding:14px 18px;border-bottom:1px solid var(--line)}
+tr:last-child td{border-bottom:none}
+.status{display:inline-block;font-size:13px;font-weight:700;padding:4px 12px;border-radius:99px;white-space:nowrap}
+.s-earned{background:var(--green-soft);color:var(--green)}
+.s-progress{background:var(--accent-soft);color:var(--accent)}
+.s-next{background:#f1ede6;color:var(--muted)}
+.timeline{display:grid;gap:14px}
+.step{display:grid;grid-template-columns:150px 1fr;gap:16px;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px 22px;box-shadow:var(--shadow)}
+.step .when{font-weight:700;color:var(--accent);font-size:14px;text-transform:uppercase;letter-spacing:.06em}
+.progress{margin-top:16px;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:20px 22px;box-shadow:var(--shadow)}
+.progress-top{display:flex;justify-content:space-between;font-weight:700;margin-bottom:12px}
+.progress-top span:last-child{color:var(--muted);font-weight:600}
+.bar{height:12px;background:#f1ede6;border-radius:99px;overflow:hidden}
+.fill{height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--green));border-radius:99px;transition:width 1s ease}
+.contact{text-align:center;padding:64px 24px;background:var(--panel);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);margin-top:56px}
+.contact h2{margin-top:0}
+.contact .intro{margin:0 auto 24px}
+.foot{text-align:center;color:var(--muted);padding:32px 0;font-size:14px}
+@media (max-width:760px){
+  .hero{grid-template-columns:1fr;padding:44px 0 24px;gap:28px}
+  .nav-in{flex-direction:column;align-items:stretch;gap:8px;padding:10px 16px}
+  main{padding:0 16px 32px}
+  .step{grid-template-columns:1fr;gap:4px}
 }
 </style>
 </head>
 <body>
 <header class="nav">
-  <a class="logo" href="#top">JH</a>
-  <nav>
-    <a href="#about">About</a>
-    <a href="#now">Now</a>
-    <a href="#contact">Contact</a>
-  </nav>
+  <div class="nav-in">
+    <a class="logo" href="#home"><b>JH</b>Jonathan Hsi</a>
+    <nav class="tabs" aria-label="Pages">
+      <a href="#home">Home</a>
+      <a href="#track">Track</a>
+      <a href="#school">School</a>
+      <a href="#certificates">Certificates</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
 </header>
 
-<main id="top">
-  <section class="hero">
-    <p class="eyebrow">Student · Athlete · Builder</p>
-    <h1>Hi, I'm <span class="accent">Jonathan Hsi</span>.</h1>
-    <p class="lead">I run track, lift, and I'm learning marketing so I can build a business of my own.</p>
-    <a class="btn" href="#now">See what I'm working on</a>
-  </section>
-
-  <section id="about" class="section">
-    <h2>About me</h2>
-    <div class="cards">
-      <article class="card">
-        <h3>On the track</h3>
-        <p>Sprinter in season, in the weight room four days a week the rest of the time.</p>
-      </article>
-      <article class="card">
-        <h3>In school</h3>
-        <p>Taking a full load of advanced classes and learning to manage my time like a pro.</p>
-      </article>
-      <article class="card">
-        <h3>Building</h3>
-        <p>Working toward my first business. Right now I'm focused on learning how marketing works.</p>
-      </article>
+<main>
+  <!-- HOME -->
+  <section class="page" id="home">
+    <div class="hero">
+      <div>
+        <span class="hello">Welcome, glad you stopped by</span>
+        <h1>Hi, I'm <span>Jonathan</span>.</h1>
+        <p class="lead">I run track, lift, and study hard, and I'm learning various skills so I can create a business of my own.</p>
+        <div class="cta">
+          <a class="btn" href="#track">See my track</a>
+          <a class="btn soft" href="#contact">Say hello</a>
+        </div>
+      </div>
+      <div class="facts">
+        <a class="fact" href="#track"><i class="i-blue">100</i><div><div class="t">11.52 s in the 100m</div><div class="s">Personal record, May 2026</div></div></a>
+        <a class="fact" href="#school"><i class="i-warm">2x</i><div><div class="t">Math Research Gold</div><div class="s">Plus Science Research Honors</div></div></a>
+        <a class="fact" href="#certificates"><i class="i-green">30</i><div><div class="t">30-day marketing journey</div><div class="s" id="fact-day">Starts November 4</div></div></a>
+      </div>
     </div>
-  </section>
 
-  <section id="now" class="section">
-    <h2>What I'm working on now</h2>
-    <ul class="timeline">
-      <li><span class="tag">November</span> A 30-day marketing journey: HubSpot certifications, copywriting, content, SEO and ads.</li>
-      <li><span class="tag">Ongoing</span> Testing business ideas and talking to the people who would use them.</li>
-      <li><span class="tag">Next</span> Turning the best idea into a real product.</li>
-    </ul>
+    <h3>About me</h3>
+    <div class="grid">
+      <article class="card"><span class="badge i-blue">&#9889;</span><h4>On the track</h4><p>Sprinter in season and in the weight room four days a week the rest of the year. Training taught me to show up every day, even when progress is slow.</p></article>
+      <article class="card"><span class="badge i-warm">&#9998;</span><h4>In the classroom</h4><p>Taking a full load of advanced classes. I like problems where the answer has to be worked out, not memorized.</p></article>
+      <article class="card"><span class="badge i-green">&#9650;</span><h4>Building</h4><p>Working toward my first business. Right now I'm learning how marketing really works, one course and one experiment at a time.</p></article>
+    </div>
+
+    <h3>What I'm working on now</h3>
+    <div class="timeline">
+      <div class="step"><div class="when">Nov to early Dec</div><div>A marketing journey covering HubSpot certifications, copywriting, content, social media, SEO, analytics, ads and email. It ends with a one-page marketing plan and a pitch.</div></div>
+      <div class="step"><div class="when">Ongoing</div><div>Testing business ideas and talking to the people who would actually use them.</div></div>
+      <div class="step"><div class="when">Next</div><div>Turning the best idea into a real product.</div></div>
+    </div>
     <div class="progress">
-      <div class="progress-top"><span>Marketing journey</span><span id="day-label">Day 1 of 30</span></div>
+      <div class="progress-top"><span>Marketing journey</span><span id="day-label">Starts November 4</span></div>
       <div class="bar"><div class="fill" id="fill"></div></div>
     </div>
   </section>
 
-  <section id="contact" class="section">
-    <h2>Get in touch</h2>
-    <p>Want to collaborate or have feedback on an idea? Reach out.</p>
-    <a class="btn ghost" href="mailto:you@example.com">jonathan.b.hsi@gmail.com</a>
+  <!-- TRACK -->
+  <section class="page" id="track">
+    <div class="head">
+      <p class="kicker">Track</p>
+      <h2>Fast, and getting faster</h2>
+      <p class="intro">Track is where I learned discipline. I train year-round: lifting Monday to Thursday in the off-season and practicing daily with my team once the season starts.</p>
+    </div>
+    <h3>Personal records</h3>
+    <div class="grid">
+      <div class="card pr"><div class="ev">55m</div><div class="mark">6.86<small>s</small></div><div class="meta">Jan 2026 · Section 8 Conf. 5 Champs</div></div>
+      <div class="card pr"><div class="ev">100m</div><div class="mark">11.52<small>s</small></div><div class="meta">May 2026 · Section 8 Division 4A</div></div>
+      <div class="card pr"><div class="ev">200m</div><div class="mark">23.71<small>s</small></div><div class="meta">May 2026 · Section 8 Division 4A</div></div>
+    </div>
+    <h3>Season goals</h3>
+    <ul class="list">
+      <li><span class="dot"></span>Drop my 100m time to 11.30 s</li>
+      <li><span class="dot"></span>Get the school record for the 55, 100 and 200 m</li>
+      <li><span class="dot"></span>Qualify for nationals</li>
+    </ul>
+  </section>
+
+  <!-- SCHOOL -->
+  <section class="page" id="school">
+    <div class="head">
+      <p class="kicker">School</p>
+      <h2>Learning to think hard</h2>
+      <p class="intro">I take a demanding course load because I like being pushed. School is where I'm building the thinking skills I'll need to run a business.</p>
+    </div>
+    <h3>Research</h3>
+    <article class="card"><h4>Sprint math research</h4><p>I'm modeling how the direction of the force a sprinter pushes into the ground changes their 10 m time.</p></article>
+    <h3>Awards</h3>
+    <div class="chips">
+      <span class="chip gold">Math Research Gold (2x)</span>
+      <span class="chip gold">Science Research Honors</span>
+      <span class="chip">National Honor Society</span>
+      <span class="chip">Student Athlete Award</span>
+    </div>
+    <h3>Focus areas</h3>
+    <div class="grid">
+      <article class="card"><h4>AP Calculus BC</h4><p>Math and problem solving</p></article>
+      <article class="card"><h4>AP Biology &amp; AP Psychology</h4><p>How bodies and minds work</p></article>
+      <article class="card"><h4>IB Business</h4><p>How companies make decisions</p></article>
+      <article class="card"><h4>IB Literature</h4><p>Writing and storytelling</p></article>
+    </div>
+    <h3>Activities</h3>
+    <div class="chips"><span class="chip">Orchestra (violin)</span></div>
+  </section>
+
+  <!-- CERTIFICATES -->
+  <section class="page" id="certificates">
+    <div class="head">
+      <p class="kicker">Certificates</p>
+      <h2>Always learning</h2>
+      <p class="intro">Courses I've finished and what I'm working on next. I'm adding to this list every month.</p>
+    </div>
+    <h3>My list</h3>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Certificate</th><th>Issuer</th><th>Status</th><th>Date</th></tr></thead>
+        <tbody>
+          <tr><td>Inbound Certification</td><td>HubSpot Academy</td><td><span class="status s-progress">In progress</span></td><td>Nov 2026</td></tr>
+          <tr><td>AI for Marketers</td><td>HubSpot Academy</td><td><span class="status s-next">Up next</span></td><td></td></tr>
+          <tr><td>Content Marketing Certification</td><td>HubSpot Academy</td><td><span class="status s-next">Up next</span></td><td></td></tr>
+          <tr><td>Social Media Marketing Certification</td><td>HubSpot Academy</td><td><span class="status s-next">Up next</span></td><td></td></tr>
+          <tr><td>Google Analytics Certification</td><td>Google Skillshop</td><td><span class="status s-next">Up next</span></td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="page" id="contact">
+    <div class="contact">
+      <p class="kicker">Contact</p>
+      <h2>Let's talk</h2>
+      <p class="intro">Want to collaborate, have feedback on an idea, or just want to talk track? Reach out.</p>
+      <a class="btn" href="mailto:jonathan.b.hsi@gmail.com">jonathan.b.hsi@gmail.com</a>
+    </div>
   </section>
 </main>
 
-<footer class="foot">© <span id="year"></span>Jonathan Hsi</footer>
+<footer class="foot">© <span id="year"></span> Jonathan Hsi</footer>
 
 <script>
-document.documentElement.classList.add("js");
+// Tabs: show one page at a time, based on the #name in the address
+const pages = [...document.querySelectorAll(".page")];
+const links = [...document.querySelectorAll(".tabs a")];
+function show() {
+  const id = (location.hash || "#home").slice(1);
+  const page = pages.find(p => p.id === id) || pages[0];
+  pages.forEach(p => p.classList.toggle("active", p === page));
+  links.forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + page.id));
+  window.scrollTo(0, 0);
+}
+window.addEventListener("hashchange", show);
+show();
 
-// 1. Footer year
 document.getElementById("year").textContent = new Date().getFullYear();
 
-// 2. Marketing journey progress bar (Day 1 = November 3, 2026)
-const start = new Date(2026, 10, 3); // months start at 0, so 10 = November
-const today = new Date();
-const day = Math.min(30, Math.max(1, Math.floor((today - start) / 86400000) + 1));
-document.getElementById("day-label").textContent = "Day " + day + " of 30";
-setTimeout(() => {
-  document.getElementById("fill").style.width = (day / 30) * 100 + "%";
-}, 300);
-
-// 3. Fade each section in when it scrolls into view
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) entry.target.classList.add("show");
-  });
-}, { threshold: 0.15 });
-document.querySelectorAll(".section").forEach((s) => observer.observe(s));
+// Marketing journey progress (Day 1 = November 4, 2026)
+const start = new Date(2026, 10, 4);
+const day = Math.floor((new Date() - start) / 86400000) + 1;
+if (day >= 1) {
+  const d = Math.min(30, day);
+  const label = d >= 30 ? "Complete" : "Day " + d + " of 30";
+  document.getElementById("day-label").textContent = label;
+  document.getElementById("fact-day").textContent = label;
+  setTimeout(() => { document.getElementById("fill").style.width = (d / 30) * 100 + "%"; }, 300);
+}
 </script>
 </body>
 </html>
