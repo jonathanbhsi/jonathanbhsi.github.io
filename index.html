@@ -4,240 +4,345 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Jonathan Hsi</title>
-<meta name="description" content="Jonathan Hsi: sprinter, math researcher, and future founder learning marketing and code.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230e8fb3'/%3E%3Ctext x='32' y='42' font-family='Arial' font-weight='700' font-size='26' fill='white' text-anchor='middle'%3EJH%3C/text%3E%3C/svg%3E">
+<meta name="description" content="Jonathan Hsi: sprinter, math researcher, violinist, learning marketing and web development.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23f6f3ec'/%3E%3Ctext x='32' y='44' font-family='Georgia' font-size='34' fill='%23222' text-anchor='middle'%3Ej%3C/text%3E%3C/svg%3E">
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap");
 :root{
-  --bg:#fbf8f3; --panel:#ffffff; --ink:#1d2533; --muted:#5d6878; --line:#ebe5dc;
-  --accent:#0e8fb3; --accent-soft:#e3f4f9; --warm:#f2994a; --warm-soft:#fdeedf; --green:#2a9d6f; --green-soft:#e2f4ec;
-  --shadow:0 1px 2px rgba(29,37,51,.04),0 8px 24px rgba(29,37,51,.06);
+  --paper:#f6f3ec; --card:#fffdf8; --ink:#232323; --soft:#5f5b53; --faint:#8d877c; --rule:#dcd5c8;
+  --link:#2f5d8a; --mark:#f6dfa0;
+  --coral:#d9603b; --sage:#4f8a6b; --blue:#2f6aa3; --gold:#d6a33a; --plum:#8a5a9e;
+  --page:var(--coral);
 }
+:root[data-theme="dark"]{
+  --paper:#17191c; --card:#1f2226; --ink:#ece8df; --soft:#b3ada2; --faint:#8a857c; --rule:#33363b;
+  --link:#8fb8e8; --mark:#5c4a1c;
+  --coral:#f08a66; --sage:#7fbf9b; --blue:#7fb0e6; --gold:#e8c06a; --plum:#c39bd6;
+}
+body{transition:background-color .3s,color .3s}
 *{box-sizing:border-box}
-body{margin:0;font-family:"Plus Jakarta Sans",system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65}
-a{color:var(--accent)}
-.nav{position:sticky;top:0;z-index:10;background:rgba(251,248,243,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.nav-in{max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 24px}
-.logo{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--ink);text-decoration:none}
-.logo b{display:grid;place-items:center;width:36px;height:36px;border-radius:10px;background:var(--accent);color:#fff;font-size:14px;letter-spacing:.04em}
-.tabs{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
-.tabs::-webkit-scrollbar{display:none}
-.tabs a{white-space:nowrap;padding:8px 14px;border-radius:99px;color:var(--muted);text-decoration:none;font-weight:600;font-size:15px;transition:background .15s,color .15s}
-.tabs a:hover{background:var(--line);color:var(--ink)}
-.tabs a.active{background:var(--ink);color:#fff}
-main{max-width:1000px;margin:0 auto;padding:0 24px 40px}
-.page{display:none;animation:in .35s ease}
+html{font-size:19px}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Newsreader",Georgia,serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:640px;margin:0 auto;padding:0 22px}
+a{color:var(--link);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+a:hover{text-decoration-thickness:2px}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.72rem;letter-spacing:.01em}
+
+header{padding:44px 0 0}
+.name{font-size:1.15rem;font-weight:600;color:var(--ink);text-decoration:none}
+nav{display:flex;flex-wrap:wrap;gap:4px 18px;margin-top:10px}
+nav a{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.72rem;color:var(--soft);text-decoration:none;padding-bottom:2px;border-bottom:1px solid transparent}
+nav a:hover{color:var(--ink)}
+nav a.active{color:var(--ink);border-bottom-color:var(--ink)}
+
+main{padding:40px 0 20px;min-height:60vh}
+.page{display:none}
 .page.active{display:block}
-@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-@media (prefers-reduced-motion:reduce){.page{animation:none}}
-.hero{padding:72px 0 40px;display:grid;grid-template-columns:1.4fr 1fr;gap:40px;align-items:center}
-.hello{display:inline-block;background:var(--warm-soft);color:#b5641c;font-weight:700;font-size:14px;padding:6px 14px;border-radius:99px}
-h1{font-size:clamp(38px,6vw,60px);line-height:1.08;margin:16px 0;letter-spacing:-.02em}
-h1 span{color:var(--accent)}
-.lead{font-size:19px;color:var(--muted);margin:0;max-width:540px}
-.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
-.btn{display:inline-block;padding:12px 22px;border-radius:12px;font-weight:700;text-decoration:none;background:var(--accent);color:#fff;transition:transform .15s,box-shadow .15s}
-.btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(14,143,179,.25)}
-.btn.soft{background:var(--panel);color:var(--ink);border:1px solid var(--line)}
-.facts{display:grid;gap:12px}
-.fact{display:flex;align-items:center;gap:14px;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px 16px;box-shadow:var(--shadow);text-decoration:none;color:var(--ink);transition:transform .15s}
-.fact:hover{transform:translateX(4px)}
-.fact i{flex:none;display:grid;place-items:center;width:44px;height:44px;border-radius:12px;font-style:normal;font-weight:800;font-size:15px}
-.fact .t{font-weight:700}
-.fact .s{font-size:14px;color:var(--muted)}
-.i-blue{background:var(--accent-soft);color:var(--accent)}
-.i-warm{background:var(--warm-soft);color:#c96f22}
-.i-green{background:var(--green-soft);color:var(--green)}
-.head{padding:56px 0 8px}
-.kicker{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0}
-h2{font-size:clamp(30px,4.5vw,40px);margin:8px 0 10px;letter-spacing:-.01em}
-.intro{color:var(--muted);font-size:17px;max-width:640px;margin:0}
-h3{font-size:20px;margin:40px 0 14px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:var(--shadow)}
-.card h4{margin:0 0 6px;font-size:17px}
-.card p{margin:0;color:var(--muted)}
-.card .badge{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:12px;margin-bottom:12px;font-weight:800}
-.pr .ev{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-.pr .mark{font-size:44px;font-weight:800;line-height:1.1;margin:6px 0 4px;color:var(--ink)}
-.pr .mark small{font-size:20px;color:var(--muted);margin-left:2px}
-.pr .meta{font-size:14px;color:var(--muted)}
-.list{list-style:none;padding:0;margin:0;background:var(--panel);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}
-.list li{display:flex;gap:12px;align-items:flex-start;padding:14px 20px;border-bottom:1px solid var(--line)}
-.list li:last-child{border-bottom:none}
-.dot{flex:none;width:10px;height:10px;border-radius:50%;margin-top:9px;background:var(--green)}
-.chips{display:flex;flex-wrap:wrap;gap:10px}
-.chip{background:var(--panel);border:1px solid var(--line);border-radius:99px;padding:8px 16px;font-weight:600;font-size:15px;box-shadow:var(--shadow)}
-.chip.gold{background:var(--warm-soft);border-color:#f6d7b8;color:#9a5418}
-.tablewrap{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}
-table{width:100%;border-collapse:collapse;font-size:15px;min-width:520px}
-th{text-align:left;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:14px 18px;border-bottom:1px solid var(--line)}
-td{padding:14px 18px;border-bottom:1px solid var(--line)}
-tr:last-child td{border-bottom:none}
-.status{display:inline-block;font-size:13px;font-weight:700;padding:4px 12px;border-radius:99px;white-space:nowrap}
-.s-earned{background:var(--green-soft);color:var(--green)}
-.s-progress{background:var(--accent-soft);color:var(--accent)}
-.s-next{background:#f1ede6;color:var(--muted)}
-.timeline{display:grid;gap:14px}
-.step{display:grid;grid-template-columns:150px 1fr;gap:16px;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px 22px;box-shadow:var(--shadow)}
-.step .when{font-weight:700;color:var(--accent);font-size:14px;text-transform:uppercase;letter-spacing:.06em}
-.progress{margin-top:16px;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:20px 22px;box-shadow:var(--shadow)}
-.progress-top{display:flex;justify-content:space-between;font-weight:700;margin-bottom:12px}
-.progress-top span:last-child{color:var(--muted);font-weight:600}
-.bar{height:12px;background:#f1ede6;border-radius:99px;overflow:hidden}
-.fill{height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--green));border-radius:99px;transition:width 1s ease}
-.contact{text-align:center;padding:64px 24px;background:var(--panel);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);margin-top:56px}
-.contact h2{margin-top:0}
-.contact .intro{margin:0 auto 24px}
-.foot{text-align:center;color:var(--muted);padding:32px 0;font-size:14px}
-@media (max-width:760px){
-  .hero{grid-template-columns:1fr;padding:44px 0 24px;gap:28px}
-  .nav-in{flex-direction:column;align-items:stretch;gap:8px;padding:10px 16px}
-  main{padding:0 16px 32px}
-  .step{grid-template-columns:1fr;gap:4px}
+h1{font-size:1.9rem;font-weight:500;line-height:1.2;margin:0 0 22px;letter-spacing:-.01em}
+h2{font-size:1rem;font-weight:600;margin:40px 0 10px}
+p{margin:0 0 16px}
+.lede{font-size:1.15rem}
+mark{background:linear-gradient(transparent 55%,var(--mark) 55%);color:inherit;padding:0 1px}
+hr{border:none;border-top:1px solid var(--rule);margin:36px 0}
+
+.rows{list-style:none;padding:0;margin:0}
+.rows li{display:grid;grid-template-columns:120px 1fr;gap:14px;padding:10px 0;border-top:1px solid var(--rule)}
+.rows li:last-child{border-bottom:1px solid var(--rule)}
+.rows .when{color:var(--faint);padding-top:4px}
+.rows .what b{font-weight:600}
+.rows .what span{display:block;color:var(--soft)}
+.status{color:var(--faint)}
+
+.work{list-style:none;padding:0;margin:0}
+.work li{padding:18px 0;border-top:1px solid var(--rule)}
+.work li:last-child{border-bottom:1px solid var(--rule)}
+.work .top{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.work h3{font-size:1.05rem;font-weight:600;margin:0}
+.work p{margin:6px 0 4px;color:var(--soft)}
+.work .meta{color:var(--faint)}
+
+table{width:100%;border-collapse:collapse;margin:6px 0 4px}
+th{text-align:left;font-weight:400;color:var(--faint);padding:6px 0;border-bottom:1px solid var(--ink)}
+td{padding:9px 0;border-bottom:1px solid var(--rule);vertical-align:baseline}
+td.num{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.95rem;font-weight:500}
+th:not(:first-child),td:not(:first-child){padding-left:14px}
+
+ul.plain{padding-left:1.1em;margin:0 0 16px}
+ul.plain li{margin:4px 0}
+.note{color:var(--soft);font-style:italic}
+.sig{font-style:italic;color:var(--soft);margin-top:28px}
+
+footer{padding:30px 0 50px;color:var(--faint);border-top:1px solid var(--rule);margin-top:30px}
+footer p{margin:0}
+
+.toprow{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.name{display:inline-flex;align-items:center;gap:10px}
+.dot{width:12px;height:12px;border-radius:50%;background:var(--page);transition:background .3s,transform .3s}
+.name:hover .dot{transform:scale(1.4)}
+.tools{display:flex;gap:8px;align-items:center}
+.tools button{font:inherit;cursor:pointer;background:var(--card);border:1px solid var(--rule);color:var(--soft);border-radius:8px;height:34px;display:inline-flex;align-items:center;gap:6px;padding:0 10px}
+.tools button:hover{color:var(--ink);border-color:var(--soft)}
+kbd{font-family:"IBM Plex Mono",monospace;font-size:.7rem;border:1px solid var(--rule);border-bottom-width:2px;border-radius:4px;padding:0 5px;background:var(--card);color:var(--ink)}
+.theme{width:34px;justify-content:center;font-size:16px}
+nav a.active{color:var(--page);border-bottom-color:var(--page)}
+h1::after{content:"";display:inline-block;width:.32em;height:.32em;border-radius:50%;background:var(--page);margin-left:.18em;vertical-align:.08em}
+a{color:var(--link)}
+.lede a,main p a{text-decoration-color:color-mix(in srgb,var(--page) 70%,transparent)}
+mark{background:linear-gradient(transparent 55%,color-mix(in srgb,var(--page) 30%,transparent) 55%)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:28px 0 8px}
+.stat{display:block;text-decoration:none;color:var(--ink);background:var(--card);border:1px solid var(--rule);border-top:3px solid var(--c);border-radius:10px;padding:14px 16px;transition:transform .2s,border-color .2s}
+.stat:hover{transform:translateY(-3px)}
+.stat b{display:block;font-family:"IBM Plex Mono",monospace;font-size:1.5rem;font-weight:500;color:var(--c)}
+.stat span{font-size:.8rem;color:var(--soft)}
+.work li{position:relative;padding-left:16px;transition:padding .25s}
+.work li::before{content:"";position:absolute;left:0;top:18px;bottom:18px;width:3px;border-radius:2px;background:var(--c);transform:scaleY(.25);transform-origin:top;transition:transform .25s}
+.work li:hover{padding-left:22px}
+.work li:hover::before{transform:scaleY(1)}
+.work li:hover h3{color:var(--c)}
+.small{font-size:.88rem}
+.faint{color:var(--faint)}
+.race,.demo{background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:16px 18px;margin:8px 0 10px}
+.race-controls{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-bottom:12px}
+.race-controls input{font:inherit;width:90px;padding:4px 8px;border:1px solid var(--rule);border-radius:6px;background:var(--paper);color:var(--ink)}
+.go{font:inherit;font-weight:600;cursor:pointer;border:none;border-radius:8px;padding:7px 16px;background:var(--coral);color:#fff}
+.go:hover{filter:brightness(1.07)}
+.lane{display:grid;grid-template-columns:44px 1fr 64px;align-items:center;gap:10px;padding:7px 0}
+.lname{font-size:.85rem;color:var(--soft)}
+.track-line{position:relative;height:18px;border-radius:9px;background:repeating-linear-gradient(90deg,var(--rule) 0 2px,transparent 2px 10%);border:1px solid var(--rule)}
+.runner{position:absolute;top:50%;left:0;width:16px;height:16px;margin:-8px 0 0 -8px;border-radius:50%;background:var(--c);box-shadow:0 0 0 3px color-mix(in srgb,var(--c) 25%,transparent)}
+.ltime{text-align:right;color:var(--ink)}
+.race-foot{display:flex;justify-content:space-between;color:var(--faint);margin-top:8px}
+.demo-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:6px}
+.demo svg{width:100%;max-width:420px;display:block;margin:0 auto}
+.slider{display:flex;flex-direction:column;gap:4px;font-size:.88rem;color:var(--soft);margin-top:6px}
+.slider input{accent-color:var(--plum);width:100%}
+.readout{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+.readout div{display:flex;flex-direction:column}
+.readout b{font-family:"IBM Plex Mono",monospace;font-weight:500;font-size:1.05rem}
+.palette{position:fixed;inset:0;background:rgba(20,18,15,.35);backdrop-filter:blur(2px);display:flex;justify-content:center;align-items:flex-start;padding:14vh 16px 0;z-index:50}
+.palette[hidden]{display:none}
+.pbox{width:min(520px,100%);background:var(--card);border:1px solid var(--rule);border-radius:12px;box-shadow:0 20px 50px rgba(0,0,0,.2);overflow:hidden;animation:pop .14s ease-out}
+@keyframes pop{from{transform:scale(.97);opacity:0}}
+#pinput{width:100%;font:inherit;font-size:1rem;padding:14px 16px;border:none;border-bottom:1px solid var(--rule);background:transparent;color:var(--ink);outline:none}
+#plist{list-style:none;margin:0;padding:6px;max-height:300px;overflow:auto}
+#plist li{display:flex;justify-content:space-between;align-items:center;padding:8px 10px;border-radius:8px;cursor:pointer}
+#plist li .mono{color:var(--faint)}
+#plist li[aria-selected="true"]{background:color-mix(in srgb,var(--page) 14%,transparent)}
+#plist li i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:10px;background:var(--c)}
+.phint{padding:8px 16px;border-top:1px solid var(--rule);color:var(--faint)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+@media (max-width:560px){.stats{grid-template-columns:1fr}.readout{grid-template-columns:1fr 1fr 1fr}.kbd .mono{display:none}}
+
+@media (max-width:560px){
+  html{font-size:18px}
+  header{padding-top:30px}
+  h1{font-size:1.6rem}
+  .rows li{grid-template-columns:1fr;gap:2px}
+  .rows .when{padding-top:0}
 }
 </style>
 </head>
 <body>
-<header class="nav">
-  <div class="nav-in">
-    <a class="logo" href="#home"><b>JH</b>Jonathan Hsi</a>
-    <nav class="tabs" aria-label="Pages">
-      <a href="#home">Home</a>
-      <a href="#track">Track</a>
-      <a href="#school">School</a>
-      <a href="#certificates">Certificates</a>
-      <a href="#contact">Contact</a>
+<div class="wrap">
+  <header>
+    <div class="toprow">
+      <a class="name" href="#home"><span class="dot" aria-hidden="true"></span>Jonathan Hsi</a>
+      <div class="tools">
+        <button class="kbd" id="open-palette" aria-label="Open quick menu"><span class="mono">press</span> <kbd>/</kbd></button>
+        <button class="theme" id="theme" aria-label="Switch light or dark mode"><span aria-hidden="true" id="theme-icon">&#9790;</span></button>
+      </div>
+    </div>
+    <nav aria-label="Pages">
+      <a href="#home" data-c="coral">home</a>
+      <a href="#about" data-c="sage">about</a>
+      <a href="#work" data-c="blue">work</a>
+      <a href="#track" data-c="coral">track</a>
+      <a href="#school" data-c="plum">school</a>
+      <a href="#certificates" data-c="gold">certificates</a>
+      <a href="#contact" data-c="sage">contact</a>
     </nav>
-  </div>
-</header>
+  </header>
 
-<main>
-  <!-- HOME -->
-  <section class="page" id="home">
-    <div class="hero">
-      <div>
-        <span class="hello">Welcome, glad you stopped by</span>
-        <h1>Hi, I'm <span>Jonathan</span>.</h1>
-        <p class="lead">I run track, lift, and study hard, and I'm learning various skills so I can create a business of my own.</p>
-        <div class="cta">
-          <a class="btn" href="#track">See my track</a>
-          <a class="btn soft" href="#contact">Say hello</a>
-        </div>
+  <main>
+    <!-- HOME -->
+    <section class="page" id="home">
+      <h1>Hi, I'm Jonathan.</h1>
+      <p class="lede">I'm a student who runs track, does math research, and plays violin. I'm also teaching myself marketing and web development, because I want to start a business of my own someday.</p>
+      <p>On a normal day that means class, then <a href="#track">practice or the weight room</a>, then homework, then whatever I'm <a href="#work">building</a> on the side. This site is where I keep track of all of it.</p>
+
+      <div class="stats">
+        <a class="stat" href="#track" style="--c:var(--coral)"><b data-count="11.52" data-dec="2">0</b><span>100 m PR (s)</span></a>
+        <a class="stat" href="#school" style="--c:var(--plum)"><b data-count="2" data-dec="0">0</b><span>math research golds</span></a>
+        <a class="stat" href="#certificates" style="--c:var(--gold)"><b id="stat-day">0</b><span>day of 30, marketing</span></a>
       </div>
-      <div class="facts">
-        <a class="fact" href="#track"><i class="i-blue">100</i><div><div class="t">11.52 s in the 100m</div><div class="s">Personal record, May 2026</div></div></a>
-        <a class="fact" href="#school"><i class="i-warm">2x</i><div><div class="t">Math Research Gold</div><div class="s">Plus Science Research Honors</div></div></a>
-        <a class="fact" href="#certificates"><i class="i-green">30</i><div><div class="t">30-day marketing journey</div><div class="s" id="fact-day">Starts November 4</div></div></a>
-      </div>
-    </div>
 
-    <h3>About me</h3>
-    <div class="grid">
-      <article class="card"><span class="badge i-blue">&#9889;</span><h4>On the track</h4><p>Sprinter in season and in the weight room four days a week the rest of the year. Training taught me to show up every day, even when progress is slow.</p></article>
-      <article class="card"><span class="badge i-warm">&#9998;</span><h4>In the classroom</h4><p>Taking a full load of advanced classes. I like problems where the answer has to be worked out, not memorized.</p></article>
-      <article class="card"><span class="badge i-green">&#9650;</span><h4>Building</h4><p>Working toward my first business. Right now I'm learning how marketing really works, one course and one experiment at a time.</p></article>
-    </div>
+      <h2>Right now</h2>
+      <ul class="rows">
+        <li><span class="when mono">Nov &ndash; Dec</span><span class="what"><b>A 30-day marketing journey.</b><span>HubSpot certifications, copywriting, SEO, ads and email, ending in a marketing plan and a pitch. <span class="status" id="journey-day"></span></span></span></li>
+        <li><span class="when mono">Off-season</span><span class="what"><b>Lifting four days a week.</b><span>Getting stronger before indoor season. Goal: 11.30 in the 100.</span></span></li>
+        <li><span class="when mono">Ongoing</span><span class="what"><b>Testing business ideas.</b><span>Talking to people who might actually use them before building anything.</span></span></li>
+      </ul>
 
-    <h3>What I'm working on now</h3>
-    <div class="timeline">
-      <div class="step"><div class="when">Nov to early Dec</div><div>A marketing journey covering HubSpot certifications, copywriting, content, social media, SEO, analytics, ads and email. It ends with a one-page marketing plan and a pitch.</div></div>
-      <div class="step"><div class="when">Ongoing</div><div>Testing business ideas and talking to the people who would actually use them.</div></div>
-      <div class="step"><div class="when">Next</div><div>Turning the best idea into a real product.</div></div>
-    </div>
-    <div class="progress">
-      <div class="progress-top"><span>Marketing journey</span><span id="day-label">Starts November 4</span></div>
-      <div class="bar"><div class="fill" id="fill"></div></div>
-    </div>
-  </section>
+      <p class="sig">Thanks for stopping by. &mdash; J</p>
+    </section>
 
-  <!-- TRACK -->
-  <section class="page" id="track">
-    <div class="head">
-      <p class="kicker">Track</p>
-      <h2>Fast, and getting faster</h2>
-      <p class="intro">Track is where I learned discipline. I train year-round: lifting Monday to Thursday in the off-season and practicing daily with my team once the season starts.</p>
-    </div>
-    <h3>Personal records</h3>
-    <div class="grid">
-      <div class="card pr"><div class="ev">55m</div><div class="mark">6.86<small>s</small></div><div class="meta">Jan 2026 · Section 8 Conf. 5 Champs</div></div>
-      <div class="card pr"><div class="ev">100m</div><div class="mark">11.52<small>s</small></div><div class="meta">May 2026 · Section 8 Division 4A</div></div>
-      <div class="card pr"><div class="ev">200m</div><div class="mark">23.71<small>s</small></div><div class="meta">May 2026 · Section 8 Division 4A</div></div>
-    </div>
-    <h3>Season goals</h3>
-    <ul class="list">
-      <li><span class="dot"></span>Drop my 100m time to 11.30 s</li>
-      <li><span class="dot"></span>Get the school record for the 55, 100 and 200 m</li>
-      <li><span class="dot"></span>Qualify for nationals</li>
-    </ul>
-  </section>
+    <!-- ABOUT -->
+    <section class="page" id="about">
+      <h1>About</h1>
+      <p class="lede">I like going fast, on the track and in everything else.</p>
+      <p>Track taught me that progress comes from small things done every day. A tenth of a second can take months. I try to bring that same patience to school, where I've spent the last few years doing math and science research, and to music: violin in orchestra, guitar when I want to play for fun.</p>
+      <p>Lately I've gotten into marketing and building things on the web, because I want to start a business. I don't have the idea locked in yet, so for now I'm learning as much as I can and testing small ideas. This website is part of that, and I keep adding to it as I go.</p>
+      <p>Things I care about: <mark>showing up every day</mark>, asking why things work, and making real things instead of just planning them.</p>
+      <h2>Outside of all that</h2>
+      <ul class="plain">
+        <li>Sprinting, mostly the 55, 100 and 200</li>
+        <li>Lifting (push, legs, pull, repeat)</li>
+        <li>Violin and guitar</li>
+        <li>Math problems that take more than one sitting</li>
+      </ul>
+    </section>
 
-  <!-- SCHOOL -->
-  <section class="page" id="school">
-    <div class="head">
-      <p class="kicker">School</p>
-      <h2>Learning to think hard</h2>
-      <p class="intro">I take a demanding course load because I like being pushed. School is where I'm building the thinking skills I'll need to run a business.</p>
-    </div>
-    <h3>Research</h3>
-    <article class="card"><h4>Sprint math research</h4><p>I'm modeling how the direction of the force a sprinter pushes into the ground changes their 10 m time.</p></article>
-    <h3>Awards</h3>
-    <div class="chips">
-      <span class="chip gold">Math Research Gold (2x)</span>
-      <span class="chip gold">Science Research Honors</span>
-      <span class="chip">National Honor Society</span>
-      <span class="chip">Student Athlete Award</span>
-    </div>
-    <h3>Focus areas</h3>
-    <div class="grid">
-      <article class="card"><h4>AP Calculus BC</h4><p>Math and problem solving</p></article>
-      <article class="card"><h4>AP Biology &amp; AP Psychology</h4><p>How bodies and minds work</p></article>
-      <article class="card"><h4>IB Business</h4><p>How companies make decisions</p></article>
-      <article class="card"><h4>IB Literature</h4><p>Writing and storytelling</p></article>
-    </div>
-    <h3>Activities</h3>
-    <div class="chips"><span class="chip">Orchestra (violin)</span></div>
-  </section>
+    <!-- WORK -->
+    <section class="page" id="work">
+      <h1>Work</h1>
+      <p>A few things I've made or am making.</p>
+      <ul class="work">
+        <li style="--c:var(--blue)">
+          <div class="top"><h3>This website</h3><span class="meta mono">2026 &middot; live</span></div>
+          <p>Plain HTML, CSS and JavaScript, hosted on GitHub Pages. No website builder or framework. Things to try on it:</p>
+          <ul class="plain small">
+            <li>Press <kbd>/</kbd> for a quick menu you can drive with the keyboard</li>
+            <li>Race me on the <a href="#track">track</a> page</li>
+            <li>Drag the force-angle slider on the <a href="#school">school</a> page</li>
+            <li>Switch dark mode with the moon button (it remembers your choice)</li>
+          </ul>
+        </li>
+        <li style="--c:var(--coral)">
+          <div class="top"><h3>Jarvis</h3><span class="meta mono">2026 &middot; daily use</span></div>
+          <p>A personal dashboard I designed and built with AI. It plans my day hour by hour around school, training and homework, tracks my lifts and bumps the target each week, and keeps a daily checklist so I stay honest.</p>
+        </li>
+        <li style="--c:var(--plum)">
+          <div class="top"><h3>Sprint math research</h3><span class="meta mono">ongoing</span></div>
+          <p>A model of how the direction a sprinter pushes into the ground changes their 10 m time. Math research has earned me two gold awards.</p>
+        </li>
+        <li style="--c:var(--gold)">
+          <div class="top"><h3>Marketing plan</h3><span class="meta mono">due Dec</span></div>
+          <p>The final project of my 30-day marketing journey: a one-page plan covering customer, content, SEO, ads and measurement, plus a 3-minute pitch.</p>
+        </li>
+      </ul>
+    </section>
 
-  <!-- CERTIFICATES -->
-  <section class="page" id="certificates">
-    <div class="head">
-      <p class="kicker">Certificates</p>
-      <h2>Always learning</h2>
-      <p class="intro">Courses I've finished and what I'm working on next. I'm adding to this list every month.</p>
-    </div>
-    <h3>My list</h3>
-    <div class="tablewrap">
+    <!-- TRACK -->
+    <section class="page" id="track">
+      <h1>Track</h1>
+      <p>I'm a sprinter. In the off-season I lift Monday through Thursday; once the season starts, it's practice every day with the team.</p>
+      <h2>Personal records</h2>
       <table>
-        <thead><tr><th>Certificate</th><th>Issuer</th><th>Status</th><th>Date</th></tr></thead>
+        <thead><tr><th>Event</th><th>Time</th><th>When</th></tr></thead>
         <tbody>
-          <tr><td>Inbound Certification</td><td>HubSpot Academy</td><td><span class="status s-progress">In progress</span></td><td>Nov 2026</td></tr>
-          <tr><td>AI for Marketers</td><td>HubSpot Academy</td><td><span class="status s-next">Up next</span></td><td></td></tr>
-          <tr><td>Content Marketing Certification</td><td>HubSpot Academy</td><td><span class="status s-next">Up next</span></td><td></td></tr>
-          <tr><td>Social Media Marketing Certification</td><td>HubSpot Academy</td><td><span class="status s-next">Up next</span></td><td></td></tr>
-          <tr><td>Google Analytics Certification</td><td>Google Skillshop</td><td><span class="status s-next">Up next</span></td><td></td></tr>
+          <tr><td>55 m</td><td class="num">6.86</td><td>Jan 2026, conference championships</td></tr>
+          <tr><td>100 m</td><td class="num">11.52</td><td>May 2026, division championships</td></tr>
+          <tr><td>200 m</td><td class="num">23.71</td><td>May 2026, division championships</td></tr>
         </tbody>
       </table>
-    </div>
-  </section>
+      <h2>Race me</h2>
+      <p>Put in your 100 m time and see how you'd finish against my PR and the world record.</p>
+      <div class="race" id="race">
+        <div class="race-controls">
+          <label>Your time <input type="number" id="your-time" value="13.50" min="9" max="30" step="0.01" inputmode="decimal"> s</label>
+          <button class="go" id="race-go">Start race</button>
+        </div>
+        <div class="lanes">
+          <div class="lane"><span class="lname">You</span><div class="track-line"><i class="runner" style="--c:var(--blue)"></i></div><span class="ltime mono" data-l="0"></span></div>
+          <div class="lane"><span class="lname">Me</span><div class="track-line"><i class="runner" style="--c:var(--coral)"></i></div><span class="ltime mono" data-l="1"></span></div>
+          <div class="lane"><span class="lname">Bolt</span><div class="track-line"><i class="runner" style="--c:var(--gold)"></i></div><span class="ltime mono" data-l="2"></span></div>
+        </div>
+        <div class="race-foot mono"><span id="race-clock">0.00 s</span><span id="race-result"></span></div>
+      </div>
 
-  <!-- CONTACT -->
-  <section class="page" id="contact">
-    <div class="contact">
-      <p class="kicker">Contact</p>
-      <h2>Let's talk</h2>
-      <p class="intro">Want to collaborate, have feedback on an idea, or just want to talk track? Reach out.</p>
-      <a class="btn" href="mailto:jonathan.b.hsi@gmail.com">jonathan.b.hsi@gmail.com</a>
-    </div>
-  </section>
-</main>
+      <h2>This season I want to</h2>
+      <ul class="plain">
+        <li>run 11.30 in the 100</li>
+        <li>break the school record in the 55, 100 and 200</li>
+        <li>qualify for nationals</li>
+      </ul>
+      <p class="note">I'll update these as the season goes.</p>
+    </section>
 
-<footer class="foot">© <span id="year"></span> Jonathan Hsi</footer>
+    <!-- SCHOOL -->
+    <section class="page" id="school">
+      <h1>School</h1>
+      <p>I take a heavy course load on purpose. The classes I get the most out of are AP Calculus BC, AP Biology, AP Psychology, IB Business and IB Literature.</p>
+      <h2>Research</h2>
+      <p>My current project models how the direction of the force a sprinter pushes into the ground affects their 10 m time. It sits right where my two favorite things meet: math and running fast.</p>
+      <div class="demo">
+        <div class="demo-head"><b>Try it: push angle</b><span class="mono faint">simplified, for illustration</span></div>
+        <svg viewBox="0 0 320 170" id="force-svg" role="img" aria-label="Force arrow split into horizontal and vertical parts">
+          <line x1="20" y1="150" x2="300" y2="150" stroke="var(--rule)" stroke-width="2"/>
+          <line id="fx" x1="80" y1="150" x2="200" y2="150" stroke="var(--blue)" stroke-width="4" stroke-linecap="round"/>
+          <line id="fy" x1="200" y1="150" x2="200" y2="60" stroke="var(--sage)" stroke-width="4" stroke-linecap="round" stroke-dasharray="2 7"/>
+          <line id="f" x1="80" y1="150" x2="200" y2="60" stroke="var(--coral)" stroke-width="5" stroke-linecap="round"/>
+          <circle id="fhead" cx="200" cy="60" r="6" fill="var(--coral)"/>
+          <path id="arc" d="" fill="none" stroke="var(--faint)" stroke-width="1.5"/>
+          <text id="angle-label" x="120" y="142" font-size="13" fill="var(--soft)" font-family="IBM Plex Mono, monospace">45&deg;</text>
+          <circle cx="80" cy="150" r="5" fill="var(--ink)"/>
+        </svg>
+        <label class="slider">Angle from the ground <input type="range" id="angle" min="20" max="80" value="55"></label>
+        <div class="readout">
+          <div><span class="mono faint">forward push</span><b id="r-fwd">&ndash;</b></div>
+          <div><span class="mono faint">upward push</span><b id="r-up">&ndash;</b></div>
+          <div><span class="mono faint">10 m time</span><b id="r-time">&ndash;</b></div>
+        </div>
+        <p class="note small" id="r-note"></p>
+      </div>
+      <h2>Awards</h2>
+      <ul class="plain">
+        <li>Math Research, gold (twice)</li>
+        <li>Science Research Honors</li>
+        <li>National Honor Society</li>
+        <li>Student Athlete Award</li>
+      </ul>
+      <h2>Activities</h2>
+      <ul class="plain"><li>Orchestra, violin</li></ul>
+    </section>
+
+    <!-- CERTIFICATES -->
+    <section class="page" id="certificates">
+      <h1>Certificates</h1>
+      <p>Free courses I'm working through, mostly marketing. I'll link each one once it's done.</p>
+      <ul class="rows">
+        <li><span class="when mono">in progress</span><span class="what"><b>Inbound Certification</b><span>HubSpot Academy</span></span></li>
+        <li><span class="when mono">next</span><span class="what"><b>AI for Marketers</b><span>HubSpot Academy</span></span></li>
+        <li><span class="when mono">next</span><span class="what"><b>Content Marketing</b><span>HubSpot Academy</span></span></li>
+        <li><span class="when mono">next</span><span class="what"><b>Social Media Marketing</b><span>HubSpot Academy</span></span></li>
+        <li><span class="when mono">next</span><span class="what"><b>Google Analytics</b><span>Google Skillshop</span></span></li>
+      </ul>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="page" id="contact">
+      <h1>Contact</h1>
+      <p>If you want to work on something together, have feedback on an idea, or just want to talk track, email me at <a href="mailto:jonathan.b.hsi@gmail.com">jonathan.b.hsi@gmail.com</a>. I read everything.</p>
+    </section>
+  </main>
+
+  <footer class="mono">
+    <p>Last updated November 2026 &middot; Plain HTML &amp; CSS on GitHub Pages</p>
+  </footer>
+</div>
+
+<div class="palette" id="palette" hidden>
+  <div class="pbox" role="dialog" aria-label="Quick menu">
+    <input id="pinput" placeholder="Go to a page or run a command..." autocomplete="off" aria-label="Search">
+    <ul id="plist" role="listbox"></ul>
+    <div class="phint mono">&uarr; &darr; to move &middot; enter to open &middot; esc to close</div>
+  </div>
+</div>
 
 <script>
-// Tabs: show one page at a time, based on the #name in the address
+// One page at a time, picked by the #name in the address
 const pages = [...document.querySelectorAll(".page")];
-const links = [...document.querySelectorAll(".tabs a")];
+const links = [...document.querySelectorAll("nav a")];
 function show() {
   const id = (location.hash || "#home").slice(1);
   const page = pages.find(p => p.id === id) || pages[0];
@@ -248,18 +353,149 @@ function show() {
 window.addEventListener("hashchange", show);
 show();
 
-document.getElementById("year").textContent = new Date().getFullYear();
+// Marketing journey day count (day 1 = November 4, 2026)
+const day = Math.floor((new Date() - new Date(2026, 10, 4)) / 86400000) + 1;
+if (day >= 1) document.getElementById("journey-day").textContent = day >= 30 ? "(Finished.)" : "(Day " + day + " of 30.)";
 
-// Marketing journey progress (Day 1 = November 4, 2026)
-const start = new Date(2026, 10, 4);
-const day = Math.floor((new Date() - start) / 86400000) + 1;
-if (day >= 1) {
-  const d = Math.min(30, day);
-  const label = d >= 30 ? "Complete" : "Day " + d + " of 30";
-  document.getElementById("day-label").textContent = label;
-  document.getElementById("fact-day").textContent = label;
-  setTimeout(() => { document.getElementById("fill").style.width = (d / 30) * 100 + "%"; }, 300);
+// ---------- page color follows the tab
+const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+function paint() {
+  const active = document.querySelector("nav a.active");
+  document.documentElement.style.setProperty("--page", "var(--" + (active ? active.dataset.c : "coral") + ")");
+  if (location.hash === "" || location.hash === "#home") countUp();
 }
+window.addEventListener("hashchange", paint);
+
+// ---------- count-up numbers on the home page
+let counted = false;
+function countUp() {
+  if (counted) return; counted = true;
+  document.querySelectorAll("[data-count]").forEach(el => {
+    const end = parseFloat(el.dataset.count), dec = +el.dataset.dec;
+    if (reduced) { el.textContent = end.toFixed(dec); return; }
+    const t0 = performance.now(), dur = 1100;
+    (function step(t) {
+      const k = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - k, 3);
+      el.textContent = (end * e).toFixed(dec);
+      if (k < 1) requestAnimationFrame(step);
+    })(t0);
+  });
+  document.getElementById("stat-day").textContent = day < 1 ? "0" : Math.min(30, day);
+}
+paint();
+
+// ---------- dark mode, remembered in this browser
+const root = document.documentElement, icon = document.getElementById("theme-icon");
+function setTheme(t) { root.dataset.theme = t; icon.innerHTML = t === "dark" ? "&#9728;" : "&#9790;"; try { localStorage.setItem("theme", t); } catch (e) {} }
+let saved = null; try { saved = localStorage.getItem("theme"); } catch (e) {}
+setTheme(saved || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"));
+document.getElementById("theme").addEventListener("click", () => setTheme(root.dataset.theme === "dark" ? "light" : "dark"));
+
+// ---------- race simulator
+// Each runner speeds up for the first 35% of their race, then holds top speed,
+// so everyone crosses the line exactly at their own time.
+const runners = [...document.querySelectorAll(".runner")], labels = [...document.querySelectorAll(".ltime")];
+const ACC = 0.35;
+const posAt = u => u >= 1 ? 1 : (u < ACC ? (u * u) / (2 * ACC) : u - ACC / 2) / (1 - ACC / 2);
+let raceFrame = 0;
+document.getElementById("race-go").addEventListener("click", () => {
+  const you = Math.max(9, Math.min(30, parseFloat(document.getElementById("your-time").value) || 13.5));
+  const times = [you, 11.52, 9.58], names = ["You", "Me", "Bolt"];
+  const slowest = Math.max(...times), speed = 1.6; // real time is sped up 1.6x so the race isn't too long
+  labels.forEach(l => l.textContent = "");
+  document.getElementById("race-result").textContent = "";
+  cancelAnimationFrame(raceFrame);
+  const t0 = performance.now();
+  (function frame(now) {
+    const t = reduced ? slowest : ((now - t0) / 1000) * speed;
+    runners.forEach((r, i) => {
+      r.style.left = (posAt(t / times[i]) * 100) + "%";
+      if (t >= times[i] && !labels[i].textContent) labels[i].textContent = times[i].toFixed(2);
+    });
+    document.getElementById("race-clock").textContent = Math.min(t, slowest).toFixed(2) + " s";
+    if (t < slowest) raceFrame = requestAnimationFrame(frame);
+    else {
+      const place = [...times].sort((a, b) => a - b).indexOf(you) + 1;
+      const gap = you - 11.52;
+      document.getElementById("race-result").textContent = place === 1 ? "You beat the world record. Call a coach." :
+        gap < 0 ? "You beat me by " + (-gap).toFixed(2) + " s." : "You finished " + gap.toFixed(2) + " s behind me.";
+    }
+  })(t0);
+});
+
+// ---------- force-angle demo (simplified physics, for illustration)
+// The leg pushes with 1.3x body weight at an angle from the ground.
+// The upward part has to hold the body up; whatever is left over goes forward.
+const angleIn = document.getElementById("angle");
+function drawForce() {
+  const deg = +angleIn.value, th = deg * Math.PI / 180, F = 1.3, g = 9.81;
+  const ox = 80, oy = 150, len = 125;
+  const hx = ox + len * Math.cos(th), hy = oy - len * Math.sin(th);
+  const set = (id, a) => { const e = document.getElementById(id); for (const k in a) e.setAttribute(k, a[k]); };
+  set("f", { x2: hx, y2: hy }); set("fhead", { cx: hx, cy: hy });
+  set("fx", { x2: hx }); set("fy", { x1: hx, x2: hx, y2: hy });
+  const r = 34; set("arc", { d: `M ${ox + r} ${oy} A ${r} ${r} 0 0 0 ${ox + r * Math.cos(th)} ${oy - r * Math.sin(th)}` });
+  const lab = document.getElementById("angle-label"); lab.textContent = deg + "°";
+  const up = F * Math.sin(th), fwd = F * Math.cos(th);
+  document.getElementById("r-fwd").textContent = fwd.toFixed(2) + " bw";
+  document.getElementById("r-up").textContent = up.toFixed(2) + " bw";
+  const note = document.getElementById("r-note");
+  if (Math.round(up * 100) / 100 < 1) {
+    document.getElementById("r-time").textContent = "fall";
+    note.textContent = "Too low: the upward push is less than body weight, so you'd tip over. Real sprinters lean low only for the first steps.";
+  } else {
+    const t = Math.sqrt(2 * 10 / (fwd * g));
+    document.getElementById("r-time").textContent = t.toFixed(2) + " s";
+    const best = Math.asin(1 / F) * 180 / Math.PI;
+    note.textContent = deg - Math.round(best) < 2 ? "This is about the lowest angle that still holds you up, which gives the most forward push."
+      : "Lower the angle toward " + best.toFixed(0) + "° to get more forward push without falling.";
+  }
+}
+angleIn.addEventListener("input", drawForce);
+drawForce();
+
+// ---------- quick menu (press / or Ctrl+K)
+const palette = document.getElementById("palette"), pin = document.getElementById("pinput"), plist = document.getElementById("plist");
+const cmds = [
+  ...[...document.querySelectorAll("nav a")].map(a => ({ label: "Go to " + a.textContent, hint: a.getAttribute("href"), c: a.dataset.c, run: () => location.hash = a.getAttribute("href") })),
+  { label: "Race me", hint: "track", c: "coral", run: () => { location.hash = "#track"; setTimeout(() => document.getElementById("race").scrollIntoView({ behavior: "smooth" }), 50); } },
+  { label: "Toggle dark mode", hint: "theme", c: "plum", run: () => document.getElementById("theme").click() },
+  { label: "Email me", hint: "contact", c: "sage", run: () => location.href = "mailto:jonathan.b.hsi@gmail.com" }
+];
+let shown = [], sel = 0;
+function renderList() {
+  const q = pin.value.toLowerCase().trim();
+  shown = cmds.filter(c => !q || c.label.toLowerCase().includes(q) || c.hint.includes(q));
+  sel = Math.min(sel, Math.max(0, shown.length - 1));
+  plist.innerHTML = "";
+  shown.forEach((c, i) => {
+    const li = document.createElement("li");
+    li.setAttribute("role", "option"); li.setAttribute("aria-selected", i === sel);
+    li.innerHTML = `<span><i style="--c:var(--${c.c})"></i></span><span class="mono"></span>`;
+    li.firstChild.append(c.label); li.lastChild.textContent = c.hint;
+    li.addEventListener("mouseenter", () => { sel = i; mark(); });
+    li.addEventListener("click", () => choose(i));
+    plist.append(li);
+  });
+  if (!shown.length) plist.innerHTML = '<li class="mono">No matches</li>';
+}
+const mark = () => [...plist.children].forEach((li, i) => li.setAttribute("aria-selected", i === sel));
+function openPalette() { palette.hidden = false; pin.value = ""; sel = 0; renderList(); pin.focus(); }
+function closePalette() { palette.hidden = true; }
+function choose(i) { const c = shown[i]; if (!c) return; closePalette(); c.run(); }
+document.getElementById("open-palette").addEventListener("click", openPalette);
+pin.addEventListener("input", () => { sel = 0; renderList(); });
+pin.addEventListener("keydown", e => {
+  if (e.key === "ArrowDown") { sel = (sel + 1) % shown.length; mark(); e.preventDefault(); }
+  else if (e.key === "ArrowUp") { sel = (sel - 1 + shown.length) % shown.length; mark(); e.preventDefault(); }
+  else if (e.key === "Enter") choose(sel);
+  else if (e.key === "Escape") closePalette();
+});
+palette.addEventListener("click", e => { if (e.target === palette) closePalette(); });
+document.addEventListener("keydown", e => {
+  const typing = /INPUT|TEXTAREA/.test(document.activeElement.tagName);
+  if ((e.key === "/" && !typing) || (e.key.toLowerCase() === "k" && (e.metaKey || e.ctrlKey))) { e.preventDefault(); openPalette(); }
+});
 </script>
 </body>
 </html>
